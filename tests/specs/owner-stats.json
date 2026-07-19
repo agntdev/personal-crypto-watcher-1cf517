@@ -1,19 +1,17 @@
 [
   {
-    "name": "/owner_stats",
+    "name": "/owner_stats shows analytics dashboard",
     "steps": [
       {
+        "send": { "text": "/owner_stats" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Show analytics dashboard"
+              "text": "📊 Owner Analytics Dashboard\n\nTotal users: 0\nActive (30d): 0\n\nNo alerts triggered yet.\n\nAlert types:\n  Threshold: 0\n  Percent: 0\n  Summary: 0"
             }
           }
-        ],
-        "send": {
-          "text": "/owner_stats"
-        }
+        ]
       }
     ]
   }

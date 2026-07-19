@@ -1,19 +1,17 @@
 [
   {
-    "name": "/settings",
+    "name": "/settings shows settings menu",
     "steps": [
       {
+        "send": { "text": "/settings" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Configure quiet hours, cooldowns, and timezone"
+              "text": "⚙️ Your settings:\n\nTap any option to change it."
             }
           }
-        ],
-        "send": {
-          "text": "/settings"
-        }
+        ]
       }
     ]
   }
