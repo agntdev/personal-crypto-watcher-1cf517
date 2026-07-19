@@ -1,19 +1,17 @@
 [
   {
-    "name": "/summary",
+    "name": "/summary shows morning summary status",
     "steps": [
       {
+        "send": { "text": "/summary" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Toggle morning summary settings"
+              "text": "📊 Morning Summary: ON at 08:00 (UTC)\n\nTap the button to view details or change settings."
             }
           }
-        ],
-        "send": {
-          "text": "/summary"
-        }
+        ]
       }
     ]
   }

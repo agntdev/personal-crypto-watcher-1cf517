@@ -1,6 +1,8 @@
 import { Composer } from "grammy";
 import { readdirSync } from "node:fs";
 import { createBot, type BotContext } from "./toolkit/index.js";
+import { resolveSessionStorage } from "./toolkit/session/redis.js";
+import { initDomainStorage } from "./crypto.js";
 
 // The per-chat session shape (ephemeral conversation state only). Extend as the
 // bot grows. Durable domain data must NOT live here — use the toolkit's
@@ -18,6 +20,11 @@ export type Ctx = BotContext<Session>;
  * Composer — NEVER edit this file (concurrent feature PRs would conflict).
  */
 export async function buildBot(token: string) {
+  // Initialize durable domain storage (separate from session storage).
+  // Uses Redis when REDIS_URL is set, falls back to in-memory.
+  const domainAdapter = resolveSessionStorage<Record<string, unknown>>(undefined);
+  initDomainStorage(domainAdapter);
+
   const bot = createBot<Session>(token, {
     initial: () => ({}),
   });

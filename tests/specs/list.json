@@ -1,19 +1,17 @@
 [
   {
-    "name": "/list",
+    "name": "/list shows watchlist with edit/remove buttons",
     "steps": [
       {
+        "send": { "text": "/list" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Show watchlist with edit/remove buttons"
+              "text": "Your watchlist is empty — tap a button below to add your first coin."
             }
           }
-        ],
-        "send": {
-          "text": "/list"
-        }
+        ]
       }
     ]
   }
